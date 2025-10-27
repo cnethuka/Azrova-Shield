@@ -1,0 +1,15 @@
+{
+  "listen": ":8080",
+  "adminSessionSecret": "u9T7yP4vXw2QzN8mK6RbF1eA0HsJ3dLp",
+  "reverseProxyTarget": "http://127.0.0.1:3000",
+  "stealthMode": false,
+  "firewallEnabled": true,
+  "challengePowDifficulty": 16,
+  "cookieVerificationTTLSeconds": 86400,
+  "strictMode": false,
+  "clusterKey": "d4f3a9b0e5c12f8d9a7b6c4e3f1a2b0c9d8e7f6a5b4c3d2e1f0a9b8c7d6e5f4a",
+  "peers": ["http://10.0.0.2:8080"],
+  "trustedProxies": ["10.0.0.0/24","192.168.0.0/16"],
+  "nginxAccessLogPath": "/var/log/nginx/access.log",
+  "nginxRpsThreshold": 600
+}

@@ -1,0 +1,73 @@
+{
+  "blockUserAgents": [
+    "curl",
+    "Wget",
+    "python-requests",
+    "python-urllib",
+    "Scrapy",
+    "httpclient",
+    "Go-http-client",
+    "libwww-perl",
+    "masscan",
+    "zgrab",
+    "Nmap",
+    "sqlmap",
+    "Nikto",
+    "Censys",
+    "Shodan",
+    "Zoominfo",
+    "awesomium",
+    "crawler",
+    "spider",
+    "bot"
+  ],
+  "blockReferrers": [
+    "censys.io",
+    "shodan.io",
+    "zoominfo.com"
+  ],
+  "uriPatterns": [
+    "(?i)\\.git",
+    "(?i)wp-admin",
+    "(?i)wp-login\\.php",
+    "(?i)xmlrpc\\.php",
+    "(?i)phpmyadmin",
+    "(?i)\\.env",
+    "(?i)\\.aws",
+    "(?i)\\.bak$",
+    "(?i)HNAP1",
+    "(?i)\\.sql$",
+    "(?i)/\\.well-known/\\w{0,10}$"
+  ],
+  "queryPatterns": [
+    "(?i)(\\bunion\\b\\s*\\bselect\\b)",
+    "(?i)(\\bor\\b\\s*1=1|\\band\\b\\s*1=1)",
+    "(?i)(sleep\\s*\\(|benchmark\\s*\\()",
+    "(?i)(%27|%22|%5c)\\s*(or|and)?\\s*\\d+=\\d+",
+    "(?i)(%3c\\s*script|%3cimg|%3csvg)",
+    "(?i)(document\\.cookie|onerror=|onload=|javascript:)",
+    "(?i)(\\.\\./|%2e%2e%2f)"
+  ],
+  "bodyPatterns": [
+    "(?i)(union\\s+select)",
+    "(?i)(or\\s+1=1)",
+    "(?i)(sleep\\s*\\()",
+    "(?i)(benchmark\\s*\\()",
+    "(?i)(<script[^>]*>)",
+    "(?i)(onerror\\s*=)",
+    "(?i)(onload\\s*=)",
+    "(?i)(javascript:)",
+    "(?i)(document\\.cookie)",
+    "(?i)(<img\\s+src=javascript:)"
+  ],
+  "headers": {
+    "X-Forwarded-For": [
+      "(?i).*,.*,"
+    ],
+    "Content-Type": [
+      "(?i)multipart/form-data;\\s*boundary=.*\\.{10,}",
+      "(?i)text/plain;.*charset=.*"
+    ]
+  },
+  "blockedIPs": []
+}

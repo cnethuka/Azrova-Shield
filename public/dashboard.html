@@ -1,0 +1,223 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://cdn.tailwindcss.com"></script>
+<title>Azrova Shield Dashboard</title>
+</head>
+<body class="min-h-screen bg-gradient-to-b from-black via-zinc-950 to-black text-gray-100">
+<div class="max-w-6xl mx-auto px-4 py-6">
+  <div class="flex items-center justify-between mb-6">
+    <div class="flex items-center gap-3">
+      <div class="h-9 w-9 rounded-lg bg-emerald-600/20 flex items-center justify-center border border-emerald-600/40">
+        <svg class="h-5 w-5 text-emerald-400" viewBox="0 0 24 24" fill="none"><path d="M12 3l7 4v6c0 4.418-3.582 8-8 8S3 17.418 3 13V7l9-4z" stroke="currentColor" stroke-width="1.5"/></svg>
+      </div>
+      <div>
+        <div class="text-2xl font-semibold">Azrova Shield</div>
+        <div class="text-xs text-zinc-400">Layer 7 DDoS Protection</div>
+      </div>
+    </div>
+    <div class="flex items-center gap-4">
+      <div class="flex items-center gap-2">
+        <label for="stealth" class="text-sm text-zinc-300 flex items-center gap-1">
+          <svg class="h-4 w-4 text-zinc-400" viewBox="0 0 24 24" fill="none"><path d="M12 5c-7 0-10 7-10 7s3 7 10 7 10-7 10-7-3-7-10-7z" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5"/></svg>
+          Stealth
+        </label>
+        <input id="stealth" type="checkbox" class="w-5 h-5 rounded border-zinc-700 bg-zinc-900 text-emerald-600">
+      </div>
+      <div class="flex items-center gap-2">
+        <label for="firewall" class="text-sm text-zinc-300 flex items-center gap-1">
+          <svg class="h-4 w-4 text-zinc-400" viewBox="0 0 24 24" fill="none"><path d="M4 7l8-4 8 4v6c0 5-3 7-8 9-5-2-8-4-8-9V7z" stroke="currentColor" stroke-width="1.5"/></svg>
+          Firewall
+        </label>
+        <input id="firewall" type="checkbox" class="w-5 h-5 rounded border-zinc-700 bg-zinc-900 text-emerald-600">
+      </div>
+      <div class="flex items-center gap-2">
+        <label for="strict" class="text-sm text-zinc-300 flex items-center gap-1">
+          <svg class="h-4 w-4 text-zinc-400" viewBox="0 0 24 24" fill="none"><path d="M4 12h16M12 4v16" stroke="currentColor" stroke-width="1.5"/></svg>
+          Strict
+        </label>
+        <input id="strict" type="checkbox" class="w-5 h-5 rounded border-zinc-700 bg-zinc-900 text-emerald-600">
+      </div>
+      <a href="/login" class="text-sm px-3 py-2 bg-zinc-900/60 border border-zinc-800 rounded hover:bg-zinc-800">Login</a>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-6">
+    <div class="bg-zinc-900/70 backdrop-blur border border-zinc-800 rounded-xl p-4">
+      <div class="flex items-center gap-3">
+        <div class="h-9 w-9 rounded-lg bg-zinc-800 border border-zinc-700 flex items-center justify-center">
+          <svg class="h-5 w-5 text-zinc-300" viewBox="0 0 24 24" fill="none"><path d="M12 8v4l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div>
+          <div class="text-zinc-400 text-xs uppercase">Uptime</div>
+          <div id="uptime" class="text-2xl font-semibold mt-1">0s</div>
+        </div>
+      </div>
+    </div>
+    <div class="bg-zinc-900/70 backdrop-blur border border-zinc-800 rounded-xl p-4">
+      <div class="flex items-center gap-3">
+        <div class="h-9 w-9 rounded-lg bg-red-900/20 border border-red-800/40 flex items-center justify-center">
+          <svg class="h-5 w-5 text-red-400" viewBox="0 0 24 24" fill="none"><path d="M12 9v6m0 4a1 1 0 110-2 1 1 0 010 2zM3 12l9-9 9 9-9 9-9-9z" stroke="currentColor" stroke-width="1.5"/></svg>
+        </div>
+        <div>
+          <div class="text-zinc-400 text-xs uppercase">WAF Blocked</div>
+          <div id="waf" class="text-2xl font-semibold mt-1">0</div>
+        </div>
+      </div>
+    </div>
+    <div class="bg-zinc-900/70 backdrop-blur border border-zinc-800 rounded-xl p-4">
+      <div class="flex items-center gap-3">
+        <div class="h-9 w-9 rounded-lg bg-amber-900/20 border border-amber-800/40 flex items-center justify-center">
+          <svg class="h-5 w-5 text-amber-400" viewBox="0 0 24 24" fill="none"><path d="M12 6v6l4 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div>
+          <div class="text-zinc-400 text-xs uppercase">Rate Limited</div>
+          <div id="rl" class="text-2xl font-semibold mt-1">0</div>
+        </div>
+      </div>
+    </div>
+    <div class="bg-zinc-900/70 backdrop-blur border border-zinc-800 rounded-xl p-4">
+      <div class="flex items-center gap-3">
+        <div class="h-9 w-9 rounded-lg bg-sky-900/20 border border-sky-800/40 flex items-center justify-center">
+          <svg class="h-5 w-5 text-sky-400" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div>
+          <div class="text-zinc-400 text-xs uppercase">Challenges</div>
+          <div id="ch" class="text-2xl font-semibold mt-1">0</div>
+        </div>
+      </div>
+    </div>
+    <div class="bg-zinc-900/70 backdrop-blur border border-zinc-800 rounded-xl p-4">
+      <div class="flex items-center gap-3">
+        <div class="h-9 w-9 rounded-lg bg-emerald-900/20 border border-emerald-800/40 flex items-center justify-center">
+          <svg class="h-5 w-5 text-emerald-400" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div>
+          <div class="text-zinc-400 text-xs uppercase">Passed</div>
+          <div id="cp" class="text-2xl font-semibold mt-1">0</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-zinc-900/70 backdrop-blur border border-zinc-800 rounded-xl p-4 mb-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div>
+        <label class="block text-sm text-zinc-400 mb-1">Nginx RPM Threshold</label>
+        <input id="rpm" type="number" min="0" class="w-full px-3 py-2 rounded bg-zinc-800 border border-zinc-700 outline-none focus:ring-2 focus:ring-emerald-600" placeholder="e.g. 600">
+      </div>
+      <div>
+        <label class="block text-sm text-zinc-400 mb-1">Window Ban Count</label>
+        <input id="banCount" type="number" min="0" class="w-full px-3 py-2 rounded bg-zinc-800 border border-zinc-700 outline-none focus:ring-2 focus:ring-emerald-600" placeholder="e.g. 1">
+      </div>
+    </div>
+    <div class="mt-4 flex items-center gap-3">
+      <button id="btnSaveMit" class="px-4 py-2 bg-emerald-600 rounded hover:bg-emerald-500">Save Mitigation</button>
+      <div id="mitMsg" class="text-sm text-zinc-400 hidden">Saved</div>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+    <div class="bg-zinc-900/70 backdrop-blur border border-zinc-800 rounded-xl p-4">
+      <div class="text-sm text-zinc-300 mb-3 flex items-center gap-2">
+        <svg class="h-4 w-4 text-zinc-400" viewBox="0 0 24 24" fill="none"><path d="M3 12h18" stroke="currentColor" stroke-width="1.5"/></svg>
+        Unblock IP
+      </div>
+      <form id="unblockForm" class="flex items-center gap-3">
+        <input id="ip" placeholder="x.x.x.x" class="flex-1 px-3 py-2 rounded bg-zinc-800 border border-zinc-700 outline-none focus:ring-2 focus:ring-emerald-600">
+        <button class="px-4 py-2 bg-emerald-600 rounded hover:bg-emerald-500">Unblock</button>
+      </form>
+      <div id="unblockMsg" class="text-sm mt-2 text-zinc-400 hidden">Done</div>
+    </div>
+
+    <div class="bg-zinc-900/70 backdrop-blur border border-zinc-800 rounded-xl p-4">
+      <div class="text-sm text-zinc-300 mb-3 flex items-center gap-2">
+        <svg class="h-4 w-4 text-zinc-400" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h10M4 18h6" stroke="currentColor" stroke-width="1.5"/></svg>
+        Page Rules
+      </div>
+      <textarea id="rulesText" class="w-full h-56 px-3 py-2 rounded bg-zinc-800 border border-zinc-700 outline-none focus:ring-2 focus:ring-emerald-600"></textarea>
+      <div class="mt-3 flex items-center gap-3">
+        <button id="btnLoadRules" class="px-4 py-2 bg-zinc-800 rounded border border-zinc-700 hover:bg-zinc-700">Load</button>
+        <button id="btnSaveRules" class="px-4 py-2 bg-emerald-600 rounded hover:bg-emerald-500">Save</button>
+        <div id="rulesMsg" class="text-sm text-zinc-400 hidden">Saved</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function getCookie(n){return document.cookie.split("; ").map(x=>x.split("=")).find(x=>x[0]===n)?.[1]||""}
+function fmtUptime(s){const d=Math.floor(s/86400);s%=86400;const h=Math.floor(s/3600);s%=3600;const m=Math.floor(s/60);s%=60;let out=[];if(d)out.push(d+"d");if(h)out.push(h+"h");if(m)out.push(m+"m");out.push(s+"s");return out.join(" ")}
+async function loadState(){
+const res=await fetch("/api/state",{credentials:"same-origin",headers:{"X-CSRF-Token":getCookie("azv_csrf")}});
+if(res.ok){
+const j=await res.json();
+document.getElementById("stealth").checked=!!j.stealth;
+document.getElementById("firewall").checked=!!j.firewall;
+if("strict" in j){ document.getElementById("strict").checked=!!j.strict; }
+const rpm=document.getElementById("rpm"); const bc=document.getElementById("banCount");
+if(rpm) rpm.value=String(j.nginxRpsThreshold||0);
+if(bc) bc.value=String(j.nginxWindowBanCount||1);
+}}
+async function setToggle(k,v){
+await fetch("/api/toggles",{method:"POST",credentials:"same-origin",headers:{"Content-Type":"application/json","X-CSRF-Token":getCookie("azv_csrf")},body:JSON.stringify({[k]:v})})
+}
+document.getElementById("stealth").addEventListener("change",e=>{setToggle("stealth",e.target.checked)})
+document.getElementById("firewall").addEventListener("change",e=>{setToggle("firewall",e.target.checked)})
+document.getElementById("strict").addEventListener("change",e=>{setToggle("strict",e.target.checked)})
+document.getElementById("btnSaveMit").addEventListener("click",async e=>{
+e.preventDefault();
+const rpm=parseInt(document.getElementById("rpm").value||"0",10);
+const ban=parseInt(document.getElementById("banCount").value||"0",10);
+await fetch("/api/toggles",{method:"POST",credentials:"same-origin",headers:{"Content-Type":"application/json","X-CSRF-Token":getCookie("azv_csrf")},body:JSON.stringify({nginxRpsThreshold:isNaN(rpm)?0:rpm,nginxWindowBanCount:isNaN(ban)?0:ban})});
+const m=document.getElementById("mitMsg");m.classList.remove("hidden");m.textContent="Saved";setTimeout(()=>m.classList.add("hidden"),1200)
+})
+document.getElementById("unblockForm").addEventListener("submit",async e=>{
+e.preventDefault()
+const ip=document.getElementById("ip").value.trim()
+if(!ip)return
+const res=await fetch("/api/unblock",{method:"POST",credentials:"same-origin",headers:{"Content-Type":"application/json","X-CSRF-Token":getCookie("azv_csrf")},body:JSON.stringify({ip})})
+if(res.ok){const m=document.getElementById("unblockMsg");m.classList.remove("hidden");setTimeout(()=>m.classList.add("hidden"),1500)}
+})
+document.getElementById("btnLoadRules").addEventListener("click",async e=>{
+e.preventDefault();
+const res=await fetch("/api/rules",{credentials:"same-origin",headers:{"X-CSRF-Token":getCookie("azv_csrf")}});
+if(res.ok){const t=await res.text();document.getElementById("rulesText").value=t}
+})
+document.getElementById("btnSaveRules").addEventListener("click",async e=>{
+e.preventDefault();
+const el=document.getElementById("rulesText");let txt=el.value.trim();
+try{JSON.parse(txt||"{}")}catch(e){alert("Invalid JSON");return}
+const res=await fetch("/api/rules",{method:"POST",credentials:"same-origin",headers:{"Content-Type":"application/json","X-CSRF-Token":getCookie("azv_csrf")},body:txt||"{}"});
+if(res.ok){const m=document.getElementById("rulesMsg");m.textContent="Saved";m.classList.remove("hidden");setTimeout(()=>m.classList.add("hidden"),1200)}
+})
+function setRows(id,arr){
+const tb=document.getElementById(id)
+tb.innerHTML=""
+arr.forEach(r=>{
+const tr=document.createElement("tr")
+const td1=document.createElement("td");td1.className="py-1";td1.textContent=r.key
+const td2=document.createElement("td");td2.className="py-1 text-right text-emerald-400";td2.textContent=r.count
+tr.appendChild(td1);tr.appendChild(td2);tb.appendChild(tr)
+})
+}
+function connectSSE(){
+const es=new EventSource("/sse/metrics")
+es.onmessage=e=>{
+const j=JSON.parse(e.data)
+document.getElementById("uptime").textContent=fmtUptime(j.uptimeSeconds||0)
+document.getElementById("waf").textContent=String(j.blockedWAF||0)
+document.getElementById("rl").textContent=String(j.rateLimited||0)
+document.getElementById("ch").textContent=String(j.challengeIssued||0)
+document.getElementById("cp").textContent=String(j.challengePassed||0)
+setRows("tblBlocked",j.topBlockedIPs||[])
+setRows("tblRL",j.topRateLimitedIPs||[])
+}
+es.onerror=()=>{setTimeout(()=>{es.close();connectSSE()},1000)}
+}
+loadState().then(connectSSE)
+</script>
+</body>
+</html>

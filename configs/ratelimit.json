@@ -1,0 +1,6 @@
+{
+  "requestsPerMinute": 600,
+  "burst": 100,
+  "tempBlockSeconds": 1800,
+  "permBlockThreshold": 5
+}

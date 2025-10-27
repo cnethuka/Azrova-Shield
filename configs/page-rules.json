@@ -1,0 +1,10 @@
+{
+  "blockPaths": [],
+  "challengePaths": [],
+  "bypassWAFPaths": [],
+  "bypassRateLimitPaths": [
+    "^/sse/metrics$",
+    "^/login$",
+    "^/public/.*$"
+  ]
+}
