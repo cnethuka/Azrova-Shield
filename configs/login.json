@@ -1,4 +1,5 @@
 {
-  "username": "cnethuka",
-  "password": "CNethuka@123"
+  "username": "admin", <-- Change this (Remove this line after configuration)
+  "password": "admin" <-- change this (Remove this line after configuration)
+
 }
